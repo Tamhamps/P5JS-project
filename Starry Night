@@ -1,0 +1,83 @@
+let stars = []; // Global variable (array)
+
+let numStars = 600; // Variable to control number of stars
+
+
+
+function setup() {
+
+  createCanvas(400, 400);
+
+  
+
+  // Initialize the stars array with random positions and sizes
+
+  for (let i = 0; i < numStars; i++) {
+
+    stars[i] = createVector(random(width), random(height), random(1, 6));
+
+  }
+
+}
+
+
+
+function draw() {
+
+  // Calculate the distance from the center of the canvas
+
+  let distance = dist(mouseX, mouseY, width / 2, height / 2);
+
+  
+
+  // If the distance is greater than 150 pixels, set background to black
+
+  if (distance > 150) {
+
+    background(0); // Black background
+
+  } else {
+
+    background(25, 25, 112); // Original background color
+
+  }
+
+  
+
+  // Draw the stars
+
+  noStroke();
+
+  fill(255);
+
+  for (let i = 0; i < numStars; i++) {
+
+    ellipse(stars[i].x, stars[i].y, stars[i].z, stars[i].z);
+
+  }
+
+
+
+  // Draw a simple shape (a moon-like curve)
+
+  fill(255);
+
+  stroke(255);
+
+  strokeWeight(3);
+
+  beginShape();
+
+  
+
+  vertex(245, 120);
+
+  bezierVertex(150, 100, 150, 250, 245, 230);
+
+  bezierVertex(200, 200, 200, 150, 245, 120);
+
+  
+
+  endShape(CLOSE);
+
+}
